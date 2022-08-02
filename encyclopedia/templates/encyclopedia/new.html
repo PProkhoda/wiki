@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+
+{% if not exist %}
+<div>
+    New Page 
+</div>
+{% endif %}
+
+{% if exist %}
+<div class="alert" role="alert">
+    This entry aileady exist. <a href="/wiki/{{ entry }}">{{ entry }}</a>
+</div>
+{% endif %}
+
+
+    <form action="{% url 'new' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit">
+    </form>
+{% endblock %}
