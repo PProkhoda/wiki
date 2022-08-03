@@ -5,12 +5,18 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Search for <i>{{ value }}</i></h1>
+    <h1>Search for: <i>"{{ value }}"</i></h1>
 
-    <ul>
-        {% for entry in search_entries %}
-            <li><a href="/wiki/{{entry}}">{{ entry }}</a></li>
-        {% endfor %}
-    </ul>
+    {% if entries %}
+        <ul>
+            {% for entry in entries %}
+                <li><a href="/wiki/{{entry}}">{{ entry }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if not entries %}
+        <h3>no results matching <i>"{{ value }}"</h3>
+    {% endif %}
 
 {% endblock %}

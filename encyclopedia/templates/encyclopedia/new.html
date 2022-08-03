@@ -14,14 +14,14 @@
 
 {% if exist %}
 <div class="alert" role="alert">
-    This entry aileady exist. <a href="/wiki/{{ entry }}">{{ entry }}</a>
+    This entry already exist. <a href="/wiki/{{ entry }}">{{ entry }}</a>
 </div>
 {% endif %}
 
+<form action="{% url 'new' %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit">
+</form>
 
-    <form action="{% url 'new' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit">
-    </form>
 {% endblock %}
